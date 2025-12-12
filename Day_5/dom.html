@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="clr">
+    <h1 id="first">This is first heading</h1>
+    <h2 id="second">This is the second heading</h2>
+    <button onclick="fun()">Click</button>
+    <button onclick="fun2()">Click</button>
+    <br> <br> <br> <br>
+
+    <button id="green">Green </button>
+    <br>
+    <button id="red">Red</button>
+    <br>
+
+    <button  id="blue">Blue</button>
+</body>
+<script>
+
+   
+
+        function fun(){
+ document.getElementById("first").innerHTML="This is the new value";
+        }
+        function fun2(){
+ document.getElementById("second").innerHTML="This is the new value";
+        }
+
+        document.getElementById("first").addEventListener("click",function (){
+           document.getElementById("first").style.color="blue";
+        }
+
+        )
+
+        
+          document.getElementById("green").addEventListener("click",function green(){
+            document.getElementById("clr").style.background="green";
+             document.getElementById("second").innerHTML="This is the new value";
+          })
+        
+        document.getElementById("red").addEventListener("click",function green(){
+            document.getElementById("clr").style.background="red";
+             document.getElementById("second").innerHTML="This is the new value";
+          })
+
+           document.getElementById("blue").addEventListener("click",function green(){
+            document.getElementById("clr").style.backgroundColor="blue";
+             document.getElementById("second").innerHTML="This is the new value";
+
+          })
+
+</script>
+</html>

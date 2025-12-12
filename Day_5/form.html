@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Improved Clean Form</title>
+
+<style>
+    body{
+        margin:0;
+        padding:0;
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:#f5f5f5;
+        font-family:Arial, sans-serif;
+    }
+
+    .card{
+        width:400px;
+        background:white;
+        padding:32px;
+        border-radius:12px;
+        box-shadow:0 8px 20px rgba(0,0,0,0.15);
+        display:flex;
+        flex-direction:column;
+        gap:22px;
+    }
+
+    h2{
+        margin:0;
+        text-align:center;
+        font-size:24px;
+        font-weight:700;
+        color:#111;
+    }
+
+    form{
+        display:flex;
+        flex-direction:column;
+        gap:18px;
+    }
+
+    .field{
+        display:flex;
+        flex-direction:column;
+        gap:6px;
+    }
+
+    label{
+        font-size:14px;
+        color:#222;
+        font-weight:600;
+    }
+
+    input{
+        width:100%;
+        padding:12px 14px;
+        border-radius:8px;
+        border:1px solid #ccc;
+        background:white;
+        font-size:14px;
+        outline:none;
+        transition:0.2s;
+    }
+    input:focus{
+        border-color:black;
+        box-shadow:0 0 0 2px rgba(0,0,0,0.15);
+    }
+
+    .inline{
+        display:flex;
+        gap:16px;
+        width:100%;
+    }
+
+    .inline .field{
+        flex:1;
+    }
+
+    button{
+        width:100%;
+        padding:12px;
+        background:black;
+        color:white;
+        border:none;
+        border-radius:8px;
+        font-size:16px;
+        cursor:pointer;
+        font-weight:600;
+        margin-top:8px;
+        transition:0.2s;
+    }
+    button:hover{
+        background:#333;
+    }
+
+    .error{
+        font-size:12px;
+        color:red;
+        min-height:14px;
+    }
+
+    .success{
+        font-size:14px;
+        color:green;
+        text-align:center;
+        font-weight:600;
+    }
+
+    /* Better alignment on small screens */
+    @media(max-width:440px){
+        .card{ width:90%; padding:26px; }
+        .inline{ flex-direction:column; gap:12px; }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>Create Account</h2>
+
+    <form id="smt">
+
+        <div class="field">
+            <label>Username</label>
+            <input id="first" type="text" placeholder="Enter username">
+            <div id="err-username" class="error"></div>
+        </div>
+
+        <div class="inline">
+            <div class="field">
+                <label>Password</label>
+                <input id="second" type="password" placeholder="Password">
+                <div id="err-password" class="error"></div>
+            </div>
+
+            <div class="field">
+                <label>Confirm Password</label>
+                <input id="confirm" type="password" placeholder="Confirm password">
+                <div id="err-confirm" class="error"></div>
+            </div>
+        </div>
+
+        <button type="submit">Submit</button>
+        <div id="success" class="success"></div>
+    </form>
+</div>
+
+<script>
+    const form = document.getElementById("smt");
+    const username = document.getElementById("first");
+    const password = document.getElementById("second");
+    const confirmPass = document.getElementById("confirm");
+
+    const errUser = document.getElementById("err-username");
+    const errPass = document.getElementById("err-password");
+    const errConfirm = document.getElementById("err-confirm");
+    const success = document.getElementById("success");
+
+    function clearErrors(){
+        errUser.textContent = "";
+        errPass.textContent = "";
+        errConfirm.textContent = "";
+        success.textContent = "";
+    }
+
+    form.addEventListener("submit", function(e){
+        e.preventDefault();
+        clearErrors();
+
+        let valid = true;
+
+        if(username.value.trim() === ""){
+            errUser.textContent = "Username is required";
+            valid = false;
+        }
+
+        if(password.value.trim() === ""){
+            errPass.textContent = "Required";
+            valid = false;
+        } else if(password.value.length < 6){
+            errPass.textContent = "Min 6 characters";
+            valid = false;
+        }
+
+        if(confirmPass.value.trim() === ""){
+            errConfirm.textContent = "Required";
+            valid = false;
+        } else if(password.value !== confirmPass.value){
+            errConfirm.textContent = "Password mismatch";
+            valid = false;
+        }
+
+        if(valid){
+            success.textContent = "Account created successfully!";
+            form.reset();
+        }
+    });
+
+    [username, password, confirmPass].forEach(input=>{
+        input.addEventListener("input", clearErrors);
+    });
+</script>
+
+</body>
+</html>
