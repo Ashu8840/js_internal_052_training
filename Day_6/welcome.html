@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - HCL Assessment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar Styling */
+        nav {
+            background-color: #2c3e50;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-left {
+            width: 50px;
+            height: 50px;
+            background-color: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .navbar-heading {
+            flex: 1;
+            text-align: center;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .logo-right {
+            width: 50px;
+            height: 50px;
+            background-color: #e74c3c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        /* Main Layout - Three Column */
+        .main-container {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        /* Left Sidebar Menu */
+        .sidebar-menu {
+            width: 200px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .sidebar-menu h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 18px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .menu-item {
+            padding: 12px 15px;
+            margin: 8px 0;
+            background-color: #ecf0f1;
+            border-left: 4px solid #3498db;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .menu-item:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* Center Image Carousel */
+        .image-section {
+            flex: 1;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .image-carousel {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-image {
+            width: 90%;
+            height: 90%;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.8s ease-in-out;
+            position: absolute;
+            opacity: 0;
+        }
+
+        .carousel-image.active {
+            opacity: 1;
+            transform: translateX(0);
+            position: relative;
+        }
+
+        .carousel-image.slide-in-left {
+            animation: slideInLeft 0.8s ease-in-out forwards;
+        }
+
+        .carousel-image.slide-in-right {
+            animation: slideInRight 0.8s ease-in-out forwards;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Right Welcome Section */
+        .welcome-section {
+            width: 300px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow-y: auto;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .welcome-icon {
+            font-size: 50px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .welcome-section h1 {
+            color: #27ae60;
+            font-size: 26px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .user-name {
+            color: #2c3e50;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin: 15px 0;
+            padding: 15px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+        }
+
+        .welcome-message {
+            color: #7f8c8d;
+            font-size: 14px;
+            text-align: center;
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+
+        .action-type {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .home-btn {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        .home-btn:hover {
+            background-color: #1a252f;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 62, 80, 0.4);
+        }
+
+        .logout-btn {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .logout-btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        /* Scrollbar Styling */
+        .image-carousel::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .image-carousel::-webkit-scrollbar-track {
+            background: #ecf0f1;
+            border-radius: 10px;
+        }
+
+        .image-carousel::-webkit-scrollbar-thumb {
+            background: #3498db;
+            border-radius: 10px;
+        }
+
+        .image-carousel::-webkit-scrollbar-thumb:hover {
+            background: #2980b9;
+        }
+
+        @media (max-width: 1024px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .sidebar-menu,
+            .welcome-section {
+                width: 100%;
+            }
+
+            .image-section {
+                min-height: 400px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 10px 20px;
+            }
+
+            .navbar-heading {
+                font-size: 20px;
+            }
+
+            .main-container {
+                padding: 10px;
+                gap: 10px;
+            }
+
+            .sidebar-menu {
+                width: 100%;
+            }
+
+            .welcome-section {
+                width: 100%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo-left">HCL</div>
+        <div class="navbar-heading">HCL Assessment</div>
+        <div class="logo-right">✓</div>
+    </nav>
+
+    <!-- Main Three Column Layout -->
+    <div class="main-container">
+        <!-- Left Sidebar Menu -->
+        <div class="sidebar-menu">
+            <h3>📋 Menu</h3>
+            <div class="menu-item">🏠 Home</div>
+            <div class="menu-item">👤 Profile</div>
+            <div class="menu-item">📝 Tests</div>
+            <div class="menu-item">📊 Results</div>
+            <div class="menu-item">⚙️ Settings</div>
+            <div class="menu-item">❓ Help</div>
+            <div class="menu-item">📞 Support</div>
+        </div>
+
+        <!-- Center Auto-Scrolling Images -->
+        <div class="image-section">
+            <div class="image-carousel" id="imageCarousel">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop" alt="Assessment 1" class="carousel-image">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop" alt="Assessment 2" class="carousel-image">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop" alt="Assessment 3" class="carousel-image">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop" alt="Assessment 4" class="carousel-image">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop" alt="Assessment 5" class="carousel-image">
+            </div>
+        </div>
+
+        <!-- Right Welcome Section -->
+        <div class="welcome-section">
+            <div class="welcome-icon">👋</div>
+            <h1>Welcome!</h1>
+            <div class="user-name" id="userName"></div>
+            <div class="welcome-message">
+                You have successfully
+                <br>
+                <span id="actionType" class="action-type"></span>
+            </div>
+            <div class="user-name" style="font-size: 16px; font-weight: 600; background: #fff; border: 1px solid #ecf0f1;" id="userEmail"></div>
+            <p style="color: #95a5a6; margin-top: 10px; font-size: 12px;">
+                Welcome to the HCL Assessment portal!
+            </p>
+            <div class="button-container">
+                <button class="home-btn" id="homeBtn">Back to Home</button>
+                <button class="logout-btn" id="logoutBtn">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get elements
+        const userNameEl = document.getElementById('userName');
+        const userEmailEl = document.getElementById('userEmail');
+        const actionTypeEl = document.getElementById('actionType');
+        const homeBtn = document.getElementById('homeBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        // Read values from query params
+        const params = new URLSearchParams(window.location.search);
+        const name = params.get('name') || 'Guest User';
+        const email = params.get('email') || 'No email provided';
+        const action = params.get('action') || 'Login';
+
+        userNameEl.textContent = name;
+        userEmailEl.textContent = `Email: ${email}`;
+        actionTypeEl.textContent = `${action}ed`;
+
+        // Home button - go back to home page
+        homeBtn.addEventListener('click', () => {
+            window.location.href = 'home.html';
+        });
+
+        // Logout button - clear session and go to home
+        logoutBtn.addEventListener('click', () => {
+            window.location.href = 'home.html';
+        });
+
+        // Auto-scroll images every 5 seconds
+        const carousel = document.getElementById('imageCarousel');
+        const carouselImages = document.querySelectorAll('.carousel-image');
+        let currentImageIndex = 0;
+
+        // Show first image on load
+        if (carouselImages.length > 0) {
+            carouselImages[0].classList.add('active', 'slide-in-left');
+        }
+
+        // Change image every 5 seconds
+        setInterval(() => {
+            // Remove active and animation classes from current image
+            carouselImages[currentImageIndex].classList.remove('active', 'slide-in-left', 'slide-in-right');
+
+            // Move to next image
+            currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
+
+            // Add active and animation classes to next image
+            carouselImages[currentImageIndex].classList.add('active', 'slide-in-left');
+        }, 5000);
+    </script>
+</body>
+</html>
