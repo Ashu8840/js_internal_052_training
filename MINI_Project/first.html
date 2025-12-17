@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo of my project starting</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+
+      .header {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 20px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .header h1 {
+        text-align: center;
+        color: #333;
+        font-size: 32px;
+        margin-bottom: 15px;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        padding: 15px 0;
+        background: rgba(102, 126, 234, 0.1);
+        border-top: 2px solid #667eea;
+        border-bottom: 2px solid #667eea;
+      }
+
+      .navbar a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        transition: all 0.3s;
+        padding: 8px 15px;
+        border-radius: 5px;
+      }
+
+      .navbar a:hover {
+        background: #667eea;
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      .container {
+        display: flex;
+        gap: 2%;
+        padding: 30px 1%;
+        height: calc(100vh - 150px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Demo of Online Project</h1>
+      <div class="navbar">
+        <a href="#">Home</a>
+        <a href="#">Gallery</a>
+        <a href="#">Menu1</a>
+        <a href="#">Menu2</a>
+        <a href="#">Menu3</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <div
+        class="notice-box"
+        style="
+          flex: 1;
+          background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+          border-radius: 15px;
+          padding: 20px;
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        "
+      >
+        <h3
+          style="
+            text-align: center;
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 20px;
+          "
+        >
+          Important Notice
+        </h3>
+        <div style="height: calc(100% - 50px); overflow: hidden">
+          <marquee
+            direction="up"
+            onmouseover="this.stop()"
+            onmouseout="this.start()"
+            style="height: 100%"
+          >
+            <p
+              style="
+                padding: 10px;
+                font-size: 15px;
+                color: #555;
+                line-height: 1.6;
+              "
+            >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Perspiciatis facere reprehenderit, doloribus eaque earum
+              consequatur. Eligendi nobis mollitia temporibus iure. Lorem ipsum
+              dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptate, deserunt! Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Quod, iste. Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Quasi, voluptate.
+            </p>
+          </marquee>
+        </div>
+      </div>
+
+      <div
+        class="notice-box"
+        style="
+          flex: 1;
+          background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+          border-radius: 15px;
+          padding: 20px;
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        "
+      >
+        <h3
+          style="
+            text-align: center;
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 20px;
+          "
+        >
+          Important Notice
+        </h3>
+        <div style="height: calc(100% - 50px); overflow: hidden">
+          <marquee
+            direction=""
+            onmouseover="this.stop()"
+            onmouseout="this.start()"
+            style="height: 100%"
+          >
+            <p
+              style="
+                padding: 10px;
+                font-size: 15px;
+                color: #555;
+                line-height: 1.6;
+              "
+            >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Perspiciatis facere reprehenderit, doloribus eaque earum
+              consequatur. Eligendi nobis mollitia temporibus iure. Lorem ipsum
+              dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptate, deserunt! Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Quod, iste.
+            </p>
+          </marquee>
+        </div>
+      </div>
+
+      <div
+        class="login-box"
+        style="
+          flex: 1;
+          background: rgba(255, 255, 255, 0.95);
+          border-radius: 15px;
+          padding: 30px;
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        "
+      >
+        <h2
+          style="
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 25px;
+            font-size: 28px;
+          "
+        >
+          Login
+        </h2>
+
+        <form
+          action="wlcm.html"
+          method="get"
+          onsubmit="return validateForm()"
+          id="loginForm"
+        >
+          <div style="margin-bottom: 20px">
+            <label
+              style="
+                display: block;
+                margin-bottom: 8px;
+                color: #555;
+                font-weight: 600;
+              "
+              >Username</label
+            >
+            <input
+              type="text"
+              name="username"
+              id="username"
+              style="
+                width: 100%;
+                padding: 12px;
+                border: 2px solid #ddd;
+                border-radius: 8px;
+                font-size: 14px;
+                transition: border-color 0.3s;
+              "
+              onfocus="this.style.borderColor='#667eea'"
+              onblur="this.style.borderColor='#ddd'"
+            />
+          </div>
+
+          <div style="margin-bottom: 20px">
+            <label
+              style="
+                display: block;
+                margin-bottom: 8px;
+                color: #555;
+                font-weight: 600;
+              "
+              >Password</label
+            >
+            <input
+              type="password"
+              name="password"
+              id="password"
+              style="
+                width: 100%;
+                padding: 12px;
+                border: 2px solid #ddd;
+                border-radius: 8px;
+                font-size: 14px;
+                transition: border-color 0.3s;
+              "
+              onfocus="this.style.borderColor='#667eea'"
+              onblur="this.style.borderColor='#ddd'"
+            />
+          </div>
+
+          <div
+            id="errorMsg"
+            style="
+              color: #e74c3c;
+              font-size: 13px;
+              margin-bottom: 15px;
+              text-align: center;
+              min-height: 20px;
+            "
+          ></div>
+
+          <button
+            type="submit"
+            style="
+              width: 100%;
+              padding: 14px;
+              background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              color: white;
+              border: none;
+              border-radius: 8px;
+              font-size: 16px;
+              font-weight: bold;
+              cursor: pointer;
+              transition: transform 0.2s;
+            "
+            onmouseover="this.style.transform='translateY(-2px)'"
+            onmouseout="this.style.transform='translateY(0)'"
+          >
+            Login
+          </button>
+
+          <div style="text-align: center; margin-top: 20px">
+            <a
+              href="registration.html"
+              style="
+                color: #667eea;
+                text-decoration: none;
+                font-weight: 600;
+                transition: color 0.3s;
+              "
+              onmouseover="this.style.color='#764ba2'"
+              onmouseout="this.style.color='#667eea'"
+            >
+              New User? Register Here
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script>
+    function validateForm() {
+      let user = document.getElementById("username").value.trim();
+      let pass = document.getElementById("password").value.trim();
+
+      if (user === "" || pass === "") {
+        document.getElementById("errorMsg").innerText =
+          "Username and Password cannot be empty!";
+        return false;
+      }
+      return true;
+    }
+  </script>
+</html>

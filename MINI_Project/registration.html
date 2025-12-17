@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Registration Form</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+        width: 100%;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+        font-size: 28px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        color: #555;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      select {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+        transition: border-color 0.3s;
+      }
+
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      select:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      .radio-group,
+      .checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-top: 8px;
+      }
+
+      .radio-group label,
+      .checkbox-group label {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+        font-weight: normal;
+        cursor: pointer;
+      }
+
+      input[type="radio"],
+      input[type="checkbox"] {
+        margin-right: 5px;
+        cursor: pointer;
+        width: 18px;
+        height: 18px;
+      }
+
+      .error {
+        color: #e74c3c;
+        font-size: 12px;
+        margin-top: 5px;
+        display: none;
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .submit-btn:active {
+        transform: translateY(0);
+      }
+
+      .output-section {
+        margin-top: 30px;
+        padding: 20px;
+        background: #d4edda;
+        border: 2px solid #28a745;
+        border-radius: 5px;
+        display: none;
+      }
+
+      .output-section h2 {
+        color: #28a745;
+        margin-bottom: 15px;
+        font-size: 22px;
+      }
+
+      .output-section p {
+        color: #155724;
+        margin-bottom: 8px;
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      .output-section p strong {
+        color: #0d4521;
+      }
+
+      .back-link {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .back-link a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .back-link a:hover {
+        text-decoration: underline;
+      }
+
+      .required {
+        color: #e74c3c;
+      }
+
+      .validation-msg {
+        color: #e74c3c;
+        font-size: 12px;
+        margin-top: 5px;
+        display: none;
+      }
+
+      .validation-msg.error {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Student Registration Form</h1>
+
+      <form id="registrationForm">
+        <!-- Name Field -->
+        <div class="form-group">
+          <label for="name">Name <span class="required">*</span></label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your full name"
+          />
+          <div class="validation-msg" id="nameError">
+            Name should not be empty
+          </div>
+        </div>
+
+        <!-- Email Field -->
+        <div class="form-group">
+          <label for="email">Email <span class="required">*</span></label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+          />
+          <div class="validation-msg" id="emailError">
+            Email should be valid
+          </div>
+        </div>
+
+        <!-- Gender Field -->
+        <div class="form-group">
+          <label>Gender <span class="required">*</span></label>
+          <div class="radio-group">
+            <label>
+              <input type="radio" name="gender" value="Male" /> Male
+            </label>
+            <label>
+              <input type="radio" name="gender" value="Female" /> Female
+            </label>
+            <label>
+              <input type="radio" name="gender" value="Other" /> Other
+            </label>
+          </div>
+          <div class="validation-msg" id="genderError">
+            Gender must be selected
+          </div>
+        </div>
+
+        <!-- Course Field -->
+        <div class="form-group">
+          <label for="course">Course <span class="required">*</span></label>
+          <select id="course" name="course">
+            <option value="">-- Select a Course --</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="Python">Python</option>
+            <option value="Java">Java</option>
+            <option value="C#">C#</option>
+            <option value="React">React</option>
+            <option value="Angular">Angular</option>
+            <option value="Node.js">Node.js</option>
+          </select>
+          <div class="validation-msg" id="courseError">
+            Course must be selected
+          </div>
+        </div>
+
+        <!-- Terms & Conditions -->
+        <div class="form-group">
+          <div class="checkbox-group">
+            <label>
+              <input type="checkbox" id="terms" name="terms" />
+              I agree to the Terms & Conditions <span class="required">*</span>
+            </label>
+          </div>
+          <div class="validation-msg" id="termsError">
+            Terms checkbox must be checked
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="submit-btn">Register</button>
+      </form>
+
+      <!-- Output Section -->
+      <div class="output-section" id="outputSection">
+        <h2>Registration Successful!</h2>
+        <p><strong>Name:</strong> <span id="outputName"></span></p>
+        <p><strong>Email:</strong> <span id="outputEmail"></span></p>
+        <p><strong>Gender:</strong> <span id="outputGender"></span></p>
+        <p><strong>Course:</strong> <span id="outputCourse"></span></p>
+      </div>
+
+      <div class="back-link">
+        <a href="first.html">← Back to Login</a>
+      </div>
+    </div>
+
+    <script>
+      // Get form and input elements
+      const form = document.getElementById("registrationForm");
+      const nameInput = document.getElementById("name");
+      const emailInput = document.getElementById("email");
+      const courseSelect = document.getElementById("course");
+      const termsCheckbox = document.getElementById("terms");
+
+      // Get error message elements
+      const nameError = document.getElementById("nameError");
+      const emailError = document.getElementById("emailError");
+      const genderError = document.getElementById("genderError");
+      const courseError = document.getElementById("courseError");
+      const termsError = document.getElementById("termsError");
+
+      // Get output elements
+      const outputSection = document.getElementById("outputSection");
+      const outputName = document.getElementById("outputName");
+      const outputEmail = document.getElementById("outputEmail");
+      const outputGender = document.getElementById("outputGender");
+      const outputCourse = document.getElementById("outputCourse");
+
+      // Email validation regex
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      // Function to hide all error messages
+      function hideAllErrors() {
+        nameError.classList.remove("error");
+        emailError.classList.remove("error");
+        genderError.classList.remove("error");
+        courseError.classList.remove("error");
+        termsError.classList.remove("error");
+      }
+
+      // Function to validate name
+      function validateName() {
+        const name = nameInput.value.trim();
+        if (name === "") {
+          nameError.classList.add("error");
+          return false;
+        }
+        nameError.classList.remove("error");
+        return true;
+      }
+
+      // Function to validate email
+      function validateEmail() {
+        const email = emailInput.value.trim();
+        if (email === "") {
+          emailError.classList.add("error");
+          return false;
+        }
+        if (!emailRegex.test(email)) {
+          emailError.classList.add("error");
+          return false;
+        }
+        emailError.classList.remove("error");
+        return true;
+      }
+
+      // Function to validate gender
+      function validateGender() {
+        const genderRadios = document.getElementsByName("gender");
+        let genderSelected = false;
+
+        for (let radio of genderRadios) {
+          if (radio.checked) {
+            genderSelected = true;
+            break;
+          }
+        }
+
+        if (!genderSelected) {
+          genderError.classList.add("error");
+          return false;
+        }
+        genderError.classList.remove("error");
+        return true;
+      }
+
+      // Function to validate course
+      function validateCourse() {
+        if (courseSelect.value === "") {
+          courseError.classList.add("error");
+          return false;
+        }
+        courseError.classList.remove("error");
+        return true;
+      }
+
+      // Function to validate terms
+      function validateTerms() {
+        if (!termsCheckbox.checked) {
+          termsError.classList.add("error");
+          return false;
+        }
+        termsError.classList.remove("error");
+        return true;
+      }
+
+      // Add real-time validation on input
+      nameInput.addEventListener("blur", validateName);
+      nameInput.addEventListener("input", function () {
+        if (nameError.classList.contains("error")) {
+          validateName();
+        }
+      });
+
+      emailInput.addEventListener("blur", validateEmail);
+      emailInput.addEventListener("input", function () {
+        if (emailError.classList.contains("error")) {
+          validateEmail();
+        }
+      });
+
+      // Add event listeners for gender radio buttons
+      const genderRadios = document.getElementsByName("gender");
+      for (let radio of genderRadios) {
+        radio.addEventListener("change", function () {
+          if (genderError.classList.contains("error")) {
+            validateGender();
+          }
+        });
+      }
+
+      courseSelect.addEventListener("change", function () {
+        if (courseError.classList.contains("error")) {
+          validateCourse();
+        }
+      });
+
+      termsCheckbox.addEventListener("change", function () {
+        if (termsError.classList.contains("error")) {
+          validateTerms();
+        }
+      });
+
+      // Form submit event
+      form.addEventListener("submit", function (event) {
+        // Prevent page reload
+        event.preventDefault();
+
+        // Hide all previous errors
+        hideAllErrors();
+
+        // Validate all fields
+        const isNameValid = validateName();
+        const isEmailValid = validateEmail();
+        const isGenderValid = validateGender();
+        const isCourseValid = validateCourse();
+        const isTermsValid = validateTerms();
+
+        // Check if all validations pass
+        if (
+          isNameValid &&
+          isEmailValid &&
+          isGenderValid &&
+          isCourseValid &&
+          isTermsValid
+        ) {
+          // Get all form values
+          const name = nameInput.value.trim();
+          const email = emailInput.value.trim();
+          const course = courseSelect.value;
+
+          // Get selected gender
+          let gender = "";
+          for (let radio of genderRadios) {
+            if (radio.checked) {
+              gender = radio.value;
+              break;
+            }
+          }
+
+          // Display the output
+          outputName.textContent = name;
+          outputEmail.textContent = email;
+          outputGender.textContent = gender;
+          outputCourse.textContent = course;
+
+          // Show output section with animation
+          outputSection.style.display = "block";
+          outputSection.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+          });
+
+          // Optional: Reset form after successful submission
+          // form.reset();
+        } else {
+          // Scroll to first error
+          const firstError = document.querySelector(".validation-msg.error");
+          if (firstError) {
+            firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
