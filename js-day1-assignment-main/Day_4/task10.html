@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Task 10: Theme Switcher</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        line-height: 1.5;
+        background: #f7f7f7;
+        color: #222;
+      }
+
+      .task {
+        background: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        padding: 14px;
+        margin-bottom: 14px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+      }
+
+      h2 {
+        margin: 0 0 8px 0;
+        font-size: 16px;
+      }
+
+      button {
+        padding: 6px 10px;
+        margin-right: 6px;
+        margin-bottom: 6px;
+        border: 1px solid #bbb;
+        border-radius: 4px;
+        background: #fff;
+        cursor: pointer;
+      }
+
+      .dark-mode {
+        background: #222;
+        color: #eee;
+      }
+
+      .dark-mode .task {
+        background: #2b2b2b;
+        border-color: #444;
+        box-shadow: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="task">
+      <h2>Task 10: Theme Switcher (Light Mode ↔ Dark Mode)</h2>
+      <div>
+        <button id="themeToggle">Toggle Theme</button>
+        <span style="margin-left: 12px"
+          >Current: <span id="themeLabel">Light</span></span
+        >
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        var btn = document.getElementById("themeToggle");
+        var label = document.getElementById("themeLabel");
+        var dark = false;
+
+        btn.addEventListener("click", function () {
+          dark = !dark;
+          if (dark) {
+            document.body.classList.add("dark-mode");
+            label.textContent = "Dark";
+          } else {
+            document.body.classList.remove("dark-mode");
+            label.textContent = "Light";
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Task 4: Show / Hide Paragraph</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.5;
+      background: #f7f7f7;
+      color: #222;
+    }
+
+    .task {
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      padding: 14px;
+      margin-bottom: 14px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+
+    h2 {
+      margin: 0 0 8px 0;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 6px 10px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      background: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="task">
+    <h2>Task 4: Show / Hide Paragraph</h2>
+    <p id="togglePara">This paragraph can be hidden or shown by the button below.</p>
+    <div>
+      <button id="toggleBtn">Hide</button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var para = document.getElementById('togglePara');
+      var btn = document.getElementById('toggleBtn');
+      var hidden = false;
+      btn.addEventListener('click', function () {
+        if (!hidden) {
+          para.style.display = 'none';
+          btn.textContent = 'Show';
+          hidden = true;
+        } else {
+          para.style.display = 'block';
+          btn.textContent = 'Hide';
+          hidden = false;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

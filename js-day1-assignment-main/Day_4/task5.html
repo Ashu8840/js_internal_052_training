@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Task 5: Counter App</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        line-height: 1.5;
+        background: #f7f7f7;
+        color: #222;
+      }
+
+      .task {
+        background: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        padding: 14px;
+        margin-bottom: 14px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+      }
+
+      h2 {
+        margin: 0 0 8px 0;
+        font-size: 16px;
+      }
+
+      button {
+        padding: 6px 10px;
+        margin-right: 6px;
+        margin-bottom: 6px;
+        border: 1px solid #bbb;
+        border-radius: 4px;
+        background: #fff;
+        cursor: pointer;
+      }
+
+      .output {
+        margin-top: 8px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="task">
+      <h2>Task 5: Counter App</h2>
+      <div>
+        <button id="decreaseBtn">- Decrease</button>
+        <button id="increaseBtn">+ Increase</button>
+        <span style="margin-left: 12px"
+          >Count: <span id="countSpan">0</span></span
+        >
+      </div>
+      <div class="output" id="countNote">Count cannot go below 0.</div>
+    </div>
+
+    <script>
+      (function () {
+        var count = 0;
+        var countSpan = document.getElementById("countSpan");
+        var incBtn = document.getElementById("increaseBtn");
+        var decBtn = document.getElementById("decreaseBtn");
+
+        function render() {
+          countSpan.textContent = count;
+        }
+
+        incBtn.addEventListener("click", function () {
+          count += 1;
+          render();
+        });
+
+        decBtn.addEventListener("click", function () {
+          if (count > 0) {
+            count -= 1;
+            render();
+          }
+        });
+
+        render();
+      })();
+    </script>
+  </body>
+</html>
